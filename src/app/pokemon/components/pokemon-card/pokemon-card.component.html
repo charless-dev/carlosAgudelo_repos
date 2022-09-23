@@ -1,0 +1,34 @@
+<article 
+    class="pokemon-card" 
+    (click)="selectPokemon( pokemon )" 
+    [style.background-color]="pokemon.primaryColor"
+    [style.border-color]="pokemon.secondaryColor"
+>
+    <img 
+        class="pokemon-card__image"
+        [src]="pokemon.sprites?.front_default" 
+        [alt]="pokemon.name"
+    >
+    <h3 class="pokemon-card__title">#{{ pokemon.id }}</h3>
+    <h3 class="pokemon-card__title">{{ pokemon.name }}</h3>
+    <div *ngIf="showDetails" class="pokemon-card__details">
+        <h3>Types</h3>
+        <ul class="pokemon-card__types">
+            <li *ngFor="let type of pokemon.types">{{ type.type.name }}, </li>
+        </ul>
+        <h3>Peso</h3>
+        <p>{{ pokemon.weight }} kg</p>
+        <h3>Sprites</h3>
+        <ul class="pokemon-card__sprites">
+            <ng-container *ngFor="let sprite of pokemon.sprites | keyvalue">
+                <li *ngIf="sprite.value !== null && sprite.value.constructor.name === 'String' ">
+                    <img  [src]="sprite.value">
+                </li>
+            </ng-container>
+        </ul>
+        <h3>Movimientos</h3>
+        <ul class="pokemon-card__moves">
+            <li *ngFor="let move of pokemon.moves">{{ move.move.name }}, </li>
+        </ul>
+    </div>
+</article>

@@ -1,0 +1,11 @@
+<nav class="pagination-container">
+    <button
+        class="btn"
+        (click)="onPagination( currentPage - paginationItems)"
+        [disabled]="currentPage === 4"
+    >Atras</button>
+    <button
+        class="btn"
+        (click)="onPagination( currentPage + paginationItems)"
+    >Siguiente</button>
+</nav>

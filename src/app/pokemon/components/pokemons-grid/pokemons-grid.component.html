@@ -1,0 +1,8 @@
+<section class="pokemons-grid">
+    <ng-container *ngFor="let pokemon of pokemons">
+        <app-pokemon-card
+            *ngIf="pokemon.id"
+            [pokemon]='pokemon'
+        ></app-pokemon-card>
+    </ng-container>
+</section>

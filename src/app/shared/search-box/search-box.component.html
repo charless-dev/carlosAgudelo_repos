@@ -1,0 +1,13 @@
+<form  
+    (ngSubmit)="searchEvent()"
+    autocomplete="off"
+    class="search-box"
+>
+    <input 
+        type="text"
+        name="term"
+        [(ngModel)]="term"
+        placeholder="Buscar..."
+        class="search-box__input"
+    />
+</form>

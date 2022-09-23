@@ -1,0 +1,32 @@
+
+<h1 class="text-center">Listado de Pokemon</h1>
+
+<header class="search-container">
+    <app-search-box 
+        (submitEvent)="searchPokemon($event)"
+    ></app-search-box>
+</header>
+
+<main class="page-container">
+    <app-pokemons-grid 
+        [pokemons]='pokemons'
+        *ngIf="(pokemons | json) != '{}';else elseBlock"
+    >
+    </app-pokemons-grid>
+    <ng-template #elseBlock><br><br>No results.</ng-template>
+    <aside>
+        <app-pokemon-detail-view
+            *ngIf="(pokemonSelected | json) != '{}';else noSelectedBlock"
+        ></app-pokemon-detail-view>
+        <ng-template #noSelectedBlock>
+            <article>Select a Pokemon</article>
+        </ng-template>
+    </aside>
+</main>
+
+<app-pagination
+    *ngIf="pokemons"
+    [paginationItems]='pokemonsPerPage'
+    [currentPage]='currentPage'
+    (paginationEvent)="makePagination($event)"
+></app-pagination>
